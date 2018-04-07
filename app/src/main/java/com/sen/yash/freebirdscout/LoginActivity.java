@@ -3,43 +3,71 @@ package com.sen.yash.freebirdscout;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
-    // UI references.
-    private AutoCompleteTextView mEmailView;
-    private EditText mPasswordView;
+    Button btn_login,btn_register;
+    EditText txt_email, txt_pwd;
+
+    UserDBHandler userDBHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        mPasswordView = (EditText) findViewById(R.id.password);
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+        userDBHandler = new UserDBHandler(this.getApplicationContext(), null, null, 1);
+        fillScreen();
+
+        txt_email = findViewById(R.id.text_email);
+        txt_pwd = findViewById(R.id.text_pwd);
+        btn_login = findViewById(R.id.btn_login);
+        btn_register = findViewById(R.id.btn_register);
+
+        btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+                String str_email = txt_email.getText().toString();
+                String str_pwd = txt_pwd.getText().toString();
 
+                if(str_email.length()==0)
+                    Toast.makeText(LoginActivity.this, "Enter email-ID", Toast.LENGTH_SHORT).show();
+                else if(str_pwd.length()==0)
+                    Toast.makeText(LoginActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                else{
+                    boolean is_success = userDBHandler.checkEntry(str_email);
+
+                    Log.d("mytag","value: "+is_success);
+
+                    if(is_success){
+                        Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                        Toast.makeText(LoginActivity.this, "It seems you haven't registered yet!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
-        Button mEmailRegisterButton = (Button) findViewById(R.id.email_register_button);
-        mEmailRegisterButton.setOnClickListener(new OnClickListener() {
+        btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent I = new Intent(LoginActivity.this,Register.class);
-                startActivity(I);
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putBundle("userDB",userDBHandler);
+                Intent intent = new Intent(LoginActivity.this,Register.class);
+                startActivity(intent);
             }
         });
     }
-}
 
+    private void fillScreen(){
+        TextView screen = findViewById(R.id.text_screen);
+        screen.setText(userDBHandler.databaseToString());
+    }
+}
