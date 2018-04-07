@@ -26,10 +26,10 @@ public class LoginActivity extends AppCompatActivity {
         userDBHandler = new UserDBHandler(this.getApplicationContext(), null, null, 1);
         fillScreen();
 
-        txt_email = findViewById(R.id.text_email);
-        txt_pwd = findViewById(R.id.text_pwd);
-        btn_login = findViewById(R.id.btn_login);
-        btn_register = findViewById(R.id.btn_register);
+        txt_email = findViewById(R.id.email);
+        txt_pwd = findViewById(R.id.password);
+        btn_login = findViewById(R.id.email_sign_in_button);
+        btn_register = findViewById(R.id.email_register_button);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putBundle("userDB",userDBHandler);
+                bundle.putBundle("userDB", UserDBHandler);
                 Intent intent = new Intent(LoginActivity.this,Register.class);
                 startActivity(intent);
             }

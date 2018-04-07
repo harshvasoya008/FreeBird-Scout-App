@@ -5,13 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-
-/**
- * Created by Harsh Vasoya on 12-05-2016.
- */
 
 public class UserDBHandler extends SQLiteOpenHelper {
 

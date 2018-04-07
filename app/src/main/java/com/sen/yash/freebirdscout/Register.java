@@ -26,11 +26,11 @@ public class Register extends AppCompatActivity {
             userDBHandler = (UserDBHandler) bundle.get("userDB");
         }
 
-        txt_email = (EditText)findViewById(R.id.text_email);
-        txt_pwd = (EditText)findViewById(R.id.text_pwd);
-        txt_confirmpwd = (EditText)findViewById(R.id.text_confirmpwd);
-        txt_name = (EditText)findViewById(R.id.text_name);
-        btn_register = (Button)findViewById(R.id.btn_register);
+        txt_email = (EditText)findViewById(R.id.email);
+        txt_pwd = (EditText)findViewById(R.id.password);
+        txt_confirmpwd = (EditText)findViewById(R.id.confirm_password);
+        txt_name = (EditText)findViewById(R.id.name);
+        btn_register = (Button)findViewById(R.id.email_register_button);
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
