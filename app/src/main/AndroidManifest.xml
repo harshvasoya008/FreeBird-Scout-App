@@ -24,7 +24,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Register" />
-        <activity android:name=".Dashboard"></activity>
+        <activity android:name=".Dashboard" />
+        <activity android:name=".Bus" />
+        <activity android:name=".Hotel" />
+        <activity android:name=".Location" />
+        <activity android:name=".Developer"></activity>
     </application>
 
 </manifest>

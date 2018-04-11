@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 public class UserDBHandler extends SQLiteOpenHelper {
 
     private static final int DB_VERSION = 1;
@@ -79,6 +81,8 @@ public class UserDBHandler extends SQLiteOpenHelper {
 
     public boolean checkEntry(String emailid){
 
+        ArrayList<String> query1 = new ArrayList<>();
+
         SQLiteDatabase db = getWritableDatabase();
         String query = "SELECT * FROM "+ TABLE_NAME;       //means select all from table_name
 
@@ -86,16 +90,12 @@ public class UserDBHandler extends SQLiteOpenHelper {
         c.moveToFirst();
 
         while (!c.isAfterLast()) {
-            if(c.getString(c.getColumnIndex(COLUMN_1)).equals(emailid)){
-                c.close();
-                db.close();
-                return true;
-            }
+            query1.add(c.getString(c.getColumnIndex(COLUMN_1)));
             c.moveToNext();
         }
         c.close();
         db.close();
-        return false;
+        return query1.contains(emailid);
     }
     
     //print database as a String

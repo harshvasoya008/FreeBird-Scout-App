@@ -24,8 +24,11 @@ public class LoginActivity extends AppCompatActivity {
 
 
         userDBHandler = new UserDBHandler(this.getApplicationContext(), null, null, 1);
-        fillScreen();
-
+        Bundle bundle = getIntent().getBundleExtra("yash");
+        if (bundle!=null){
+            userDBHandler.addData(bundle.getString("email"),bundle.getString("pwd"),bundle.getString("name"));
+        }
+        //fillScreen();
         txt_email = findViewById(R.id.email);
         txt_pwd = findViewById(R.id.password);
         btn_login = findViewById(R.id.email_sign_in_button);
@@ -48,9 +51,12 @@ public class LoginActivity extends AppCompatActivity {
 
                     if(is_success){
                         Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginActivity.this,Dashboard.class);
+                        startActivity(intent);
                     }
-                    else
+                    else {
                         Toast.makeText(LoginActivity.this, "It seems you haven't registered yet!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -58,8 +64,6 @@ public class LoginActivity extends AppCompatActivity {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putBundle("userDB", UserDBHandler);
                 Intent intent = new Intent(LoginActivity.this,Register.class);
                 startActivity(intent);
             }

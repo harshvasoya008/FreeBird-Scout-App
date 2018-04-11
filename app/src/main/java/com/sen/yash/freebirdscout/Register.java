@@ -46,7 +46,12 @@ public class Register extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("email",str_email);
+                    bundle.putString("pwd",str_pwd);
+                    bundle.putString("name",str_name);
                     Intent intent = new Intent(Register.this,LoginActivity.class);
+                    intent.putExtra("yash",bundle);
                     startActivity(intent);
                 }
             }
