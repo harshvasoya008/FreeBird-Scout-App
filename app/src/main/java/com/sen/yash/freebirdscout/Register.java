@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.sen.yash.freebirdscout.Databases.UserDBHandler;
+
 public class Register extends AppCompatActivity {
 
     EditText txt_email,txt_pwd,txt_confirmpwd, txt_name;

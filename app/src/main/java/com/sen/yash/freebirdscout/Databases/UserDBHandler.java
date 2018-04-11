@@ -1,4 +1,4 @@
-package com.sen.yash.freebirdscout;
+package com.sen.yash.freebirdscout.Databases;
 
 import android.content.ContentValues;
 import android.content.Context;

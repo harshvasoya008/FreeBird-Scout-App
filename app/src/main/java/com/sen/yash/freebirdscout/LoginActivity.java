@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sen.yash.freebirdscout.Databases.UserDBHandler;
+
 public class LoginActivity extends AppCompatActivity {
 
     Button btn_login,btn_register;
@@ -22,13 +24,15 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         userDBHandler = new UserDBHandler(this.getApplicationContext(), null, null, 1);
+
         Bundle bundle = getIntent().getBundleExtra("yash");
         if (bundle!=null){
             userDBHandler.addData(bundle.getString("email"),bundle.getString("pwd"),bundle.getString("name"));
         }
+
         //fillScreen();
+
         txt_email = findViewById(R.id.email);
         txt_pwd = findViewById(R.id.password);
         btn_login = findViewById(R.id.email_sign_in_button);
