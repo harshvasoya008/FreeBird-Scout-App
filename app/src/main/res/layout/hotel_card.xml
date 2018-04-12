@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/hotel_card_view"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    card_view:cardUseCompatPadding="true"
+    card_view:cardCornerRadius="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_margin="5dp"
+        android:background="#129de7">
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_heading"
+            android:text="Hotel name"
+            android:textSize="25sp"
+            android:textColor="#FFFFFF"
+            android:singleLine="true"
+            android:textStyle="bold"
+            android:gravity="center_vertical"/>
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_heading"
+            android:id="@+id/card_subtitle"
+            android:text="Facilities"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:singleLine="true"
+            android:gravity="center_vertical"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/card_heading"
+            android:text="₹999"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:id="@+id/card_price" />
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/card_price"
+            android:layout_below="@+id/card_price"
+            android:text="4.5"
+            android:textColor="#ffffff"
+            android:textSize="21sp"
+            android:gravity="right"
+            android:id="@+id/card_rating"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_toRightOf="@+id/card_rating"
+            android:src="@drawable/star"
+            android:layout_below="@+id/card_price"
+            android:scaleType="fitCenter"
+            android:paddingTop="2dp"/>
+
+
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>

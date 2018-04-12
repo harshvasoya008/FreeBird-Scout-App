@@ -28,7 +28,8 @@
         <activity android:name=".Bus" />
         <activity android:name=".Hotel" />
         <activity android:name=".Location" />
-        <activity android:name=".Developer"></activity>
+        <activity android:name=".Developer" />
+        <activity android:name=".HotelRoom"></activity>
     </application>
 
 </manifest>
